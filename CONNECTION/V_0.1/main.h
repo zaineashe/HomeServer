@@ -13,9 +13,10 @@ public:
 private:
 // ************ VARIABLES ************
 	boost::asio::deadline_timer		_connection_timer;
+	boost::asio::deadline_timer		_connecting_timer;
 	boost::asio::deadline_timer		_interface_timer;
-	Connection* 					_connection;
-	Interface* 						_interface;
+	Connection	 					_connection;
+	Interface 						_interface;
 	std::string						_message;
 	
 // ************ FUNCTIONS ************

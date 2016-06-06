@@ -2,14 +2,12 @@
 
 Main::Main(boost::asio::io_service& io)
 	: _connection_timer	(io, boost::posix_time::seconds(Main::_DELAY)),
+	  _connecting_timer	(io, boost::posix_time::seconds(Main::_DELAY)),
 	  _interface_timer	(io, boost::posix_time::seconds(Main::_DELAY))
 {
 #ifdef _LOG_
 	std::cout << "Initilising Host Machine Home Server" << std::endl;
 #endif
-
-	*Main::_connection 	= Connection();
-	*Main::_interface 	= Interface();
 	
 	_connection_timer.async_wait(boost::bind(&Main::runConnection, this));
 	_interface_timer.async_wait(boost::bind(&Main::runInterface, this));
@@ -17,7 +15,9 @@ Main::Main(boost::asio::io_service& io)
 
 void Main::runConnection()
 {
-	if (Main::_connection->connect())
+	Main::_connection.connect();
+	
+	if (Main::_connection.isConnected())
 	{
 		Main::_message = "Streaming Movie";
 		
@@ -68,7 +68,7 @@ void Main::streamConnection()
 
 void Main::runInterface()
 {
-	Main::_interface->update(Main::_message);
+	Main::_interface.update(Main::_message);
 	
 	Main::_interface_timer.expires_at(Main::_interface_timer.expires_at()
 			+ boost::posix_time::seconds(Main::_DELAY));
