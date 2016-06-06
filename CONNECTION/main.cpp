@@ -7,7 +7,6 @@ Main::Main()
 
 
 
-
 int main()
 {
 	Main root;
