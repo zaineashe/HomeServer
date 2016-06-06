@@ -1,0 +1,1 @@
+g++ -std=c++11 -L/usr/include/boost -o run main.cpp interface.cpp connection.cpp -lboost_system
