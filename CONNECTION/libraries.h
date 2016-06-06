@@ -10,4 +10,6 @@
 #include <boost/bind.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 
+#define _LOG_
+
 #endif //_LIBRARIES_H_

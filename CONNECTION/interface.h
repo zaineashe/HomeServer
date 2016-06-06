@@ -8,7 +8,7 @@ class Interface
 public:
 	Interface();
 	
-	void update();
+	void update(std::string);
 };
 
 #endif //_INTERFACE_H_

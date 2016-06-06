@@ -2,10 +2,14 @@
 
 Interface::Interface()
 {
+#ifdef _LOG_
 	std::cout << "Initilising Interface Protocols" << std::endl;
+#endif
 }
 
-void Interface::update()
+void Interface::update(std::string message)
 {
-	std::cout << "Updating Screen" << std::endl;
+//#ifdef _LOG_
+	std::cout << "Updating Screen: " << message << std::endl;
+//#endif
 }

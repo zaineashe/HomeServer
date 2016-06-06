@@ -16,13 +16,15 @@ private:
 	boost::asio::deadline_timer		_interface_timer;
 	Connection* 					_connection;
 	Interface* 						_interface;
+	std::string						_message;
 	
 // ************ FUNCTIONS ************
 	void runConnection();
 	void runInterface();
+	void streamConnection();
 	
 // ************ CONSTANTS ************
-	static const int _delay = 1; 
+	static const int _DELAY = 1; 
 };
 
 #endif // _MAIN_H_
