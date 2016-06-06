@@ -5,5 +5,9 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <boost/thread/thread.hpp>
+#include <boost/asio.hpp>
+#include <boost/bind.hpp>
+#include <boost/date_time/posix_time/posix_time.hpp>
 
 #endif //_LIBRARIES_H_

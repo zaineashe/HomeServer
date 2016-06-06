@@ -8,11 +8,21 @@
 class Main
 {
 public:
-	Main();
+	Main(boost::asio::io_service&);
 	
 private:
-	Connection 	_connection;
-	Interface 	_interface;
+// ************ VARIABLES ************
+	boost::asio::deadline_timer		_connection_timer;
+	boost::asio::deadline_timer		_interface_timer;
+	Connection* 					_connection;
+	Interface* 						_interface;
+	
+// ************ FUNCTIONS ************
+	void runConnection();
+	void runInterface();
+	
+// ************ CONSTANTS ************
+	static const int _delay = 1; 
 };
 
 #endif // _MAIN_H_

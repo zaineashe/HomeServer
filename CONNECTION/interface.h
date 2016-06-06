@@ -7,6 +7,8 @@ class Interface
 {
 public:
 	Interface();
+	
+	void update();
 };
 
 #endif //_INTERFACE_H_
