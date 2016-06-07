@@ -13,6 +13,8 @@ public:
 	
 	void start();
 	bool isConnected();
+	bool hasStreamed();
+	bool hasBuffered();
 	
 private:
 //************ VARIABLES ************
@@ -20,10 +22,14 @@ private:
 	IP::tcp::acceptor			_acceptor;
 	IP::tcp::socket				_socket;
 	bool						_connected;
+	bool						_streamed;
+	bool						_buffered;
 	
 //************ FUNCTIONS ************
 	
 	void accept();
+	void stream();
+	void buffer();
 	
 //************ CONSTANTS ************
 	static const int			_PORT_	= 13;

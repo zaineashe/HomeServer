@@ -1,38 +1,29 @@
-#include "main.h"
+#include "library.h"
+#include "GUI.h"
+#include "Server.h"
 
-//************ Main Class ************
-
-Main::Main()
+int main()
 {
 	LOG("Initilising Home Server V_0.2");
 	
-	Main::_gui.setMessage("Waiting For Connection");
+	GUI 	gui;
+	Server 	server;
 	
-	boost::thread gui 	(boost::bind(&GUI::start, &this->_gui));
-	boost::thread server(boost::bind(&Server::start, &this->_server));
+	gui.setMessage("Waiting For Connection");
+	
+	boost::thread t_gui 	(boost::bind(&GUI::start, &gui));
+	boost::thread t_server	(boost::bind(&Server::start, &server));
 	
 	while(true)
 	{
-		if (Main::_server.isConnected())
+		if (server.isConnected())
 		{
-			Main::_gui.setMessage("Streaming Media");
+			gui.setMessage("Streaming Media");
 			break;
 		}
 		WAIT(1);
 	}
 	
-	gui.join();
-	server.join();
-}
-
-Main::~Main()
-{
-	LOG("Terminating Home Server V_0.2");
-}
-
-//************ Main Function ************
-
-int main()
-{
-	Main();
+	t_gui.join();
+	t_server.join();
 }
