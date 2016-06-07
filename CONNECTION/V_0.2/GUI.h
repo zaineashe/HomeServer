@@ -1,0 +1,25 @@
+#ifndef		_GUI_H_
+#define		_GUI_H_
+
+#include "library.h"
+
+class GUI
+{
+public:
+	GUI();
+	~GUI();
+	
+	void start();
+	
+private:
+//************ VARIABLES ************
+
+	
+//************ FUNCTIONS ************
+	void updateScreen();
+	
+//************ CONSTANTS ************
+	static const int _DELAY_ = 1;
+};
+
+#endif	//	_GUI_H_

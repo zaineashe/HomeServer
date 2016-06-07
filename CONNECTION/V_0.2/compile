@@ -1,0 +1,1 @@
+g++ -std=c++11 main.cpp GUI.cpp Server.cpp -o run -I /usr/local/include -lboost_thread -lboost_system
