@@ -24,6 +24,8 @@ private:
 	bool						_connected;
 	bool						_streamed;
 	bool						_buffered;
+	std::vector<std::string>	_raw_file;
+	std::vector<std::string>	_enc_file;
 	
 //************ FUNCTIONS ************
 	
