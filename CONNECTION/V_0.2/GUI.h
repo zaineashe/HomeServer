@@ -10,10 +10,11 @@ public:
 	~GUI();
 	
 	void start();
+	void setMessage(std::string);
 	
 private:
 //************ VARIABLES ************
-
+	std::string 	_message;
 	
 //************ FUNCTIONS ************
 	void updateScreen();

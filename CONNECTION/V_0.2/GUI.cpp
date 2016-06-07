@@ -21,7 +21,12 @@ void GUI::start()
 	}
 }
 
+void GUI::setMessage(std::string message)
+{
+	GUI::_message = message;
+}
+
 void GUI::updateScreen()
 {
-	LOG("Updating GUI Screen");
+	LOG("Updating GUI Screen: " + GUI::_message);
 }

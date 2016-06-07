@@ -5,6 +5,8 @@ Server::Server()
 	  _socket(Server::_io)
 {
 	LOG("Initilising Backend Server Communications");
+	
+	Server::_connected = false;
 }
 
 Server::~Server()
@@ -16,14 +18,24 @@ Server::~Server()
 void Server::start()
 {
 	LOG("Initialising Server communication socket acceptor searching");
-	
+	Server::accept();
+}
+
+bool Server::isConnected()
+{
+	return Server::_connected;
+}
+
+void Server::accept()
+{
 	try
 	{
 		LOG("Server Waiting for socket connection...");
 		Server::_acceptor.accept(Server::_socket);
+		Server::_connected = true;
 		LOG("Server Connected");
 	}
-	catch (...)
+	catch (...) // What Exception? Need to be boost::exception?
 	{
 		LOG("ERROR");
 	}
