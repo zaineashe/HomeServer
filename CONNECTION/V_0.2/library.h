@@ -4,10 +4,13 @@
 #include <ctime>
 #include <string>
 #include <iostream>
+#include <sstream>
 #include <boost/asio.hpp>
 #include <boost/bind.hpp>
+#include <boost/array.hpp>
 #include <boost/thread.hpp>
 #include <boost/chrono.hpp>
+#include <boost/asio/streambuf.hpp>
 
 #define _LOG_
 

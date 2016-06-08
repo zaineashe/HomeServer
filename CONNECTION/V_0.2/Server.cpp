@@ -58,38 +58,41 @@ void Server::accept()
 
 void Server::stream()
 {
-//	try
-//	{
-//		while (true)
-//		{
-//			std::vector<char> buffer;
-//			boost::system::error_code error;
-//			
-//			size_t length = Server::_socket.read_some(boost::asio::buffer(buffer), error);
-//			
-//			if (error == boost::asio::error::eof)
-//			{
-//				Server::_streamed = true;
-//				break;
-//			}
-//			else if (error)
-//				throw boost::system::system_error(error);
-//			else
-//			{
-//				LOG("MSG: " + length);
-//				break; // Needed break
-//				//file.append(message);
-//			}
-//			WAIT(1);
-//		}
-//	}
-//	catch (std::exception& e)
-//	{
-//		LOG("ERROR");
-//	}
+	LOG("Initialised Streaming");
+	try 
+	{
+		size_t length;
+		uint32_t message_size;
+		std::string message;
+		
+		boost::asio::streambuf buffer;
+		
+		boost::asio::streambuf::mutable_buffers_type size_buffer
+			= buffer.prepare(4);
+		
+		length = Server::_socket.receive(size_buffer);
+		buffer.commit(length);
+		
+		std::istream is(&buffer);
+		is >> message_size;
+		
+		boost::asio::streambuf::mutable_buffers_type message_buffer
+			= buffer.prepare(message_size);
+		length = Server::_socket.receive(message_buffer);
+		buffer.commit(length);
+		
+		std::istream ismsg(&buffer);
+		std::getline(ismsg, message);
+		
+		std::cout << message << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		LOG("ERROR: ");
+	}
 }
 
 void Server::buffer()
 {
-	
+	LOG("Initialised Buffering");
 }
