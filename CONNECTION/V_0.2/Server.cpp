@@ -1,7 +1,7 @@
 #include "Server.h"
 
 Server::Server()
-	: _acceptor(Server::_io, IP::tcp::endpoint(IP::tcp::v4(), Server::_PORT_)),
+	: _acceptor(Server::_io, IP::tcp::endpoint(IP::tcp::v6(), Server::_PORT_)),
 	  _socket(Server::_io)
 {
 	LOG("Initilising Backend Server Communications");
